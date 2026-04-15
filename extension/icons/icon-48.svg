@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <radialGradient id="gemGrad48" cx="40%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#9B8ED8"/>
+      <stop offset="100%" stop-color="#7B6EB8"/>
+    </radialGradient>
+  </defs>
+  <rect x="9" y="9" width="30" height="30" rx="7" ry="7" transform="rotate(45 24 24)" fill="url(#gemGrad48)"/>
+  <circle cx="24" cy="24" r="5" fill="#ffffff"/>
+</svg>

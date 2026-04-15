@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiki – Setup</title>
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="paper-noise" aria-hidden="true"></div>
+  <div class="container">
+
+    <!-- Welcome header (compact, non-interactive) -->
+    <header class="welcome-header">
+      <div class="welcome-gem">
+        <svg viewBox="0 0 80 80" width="64" height="64" class="gem-icon">
+          <defs>
+            <radialGradient id="gemGrad" cx="40%" cy="40%" r="65%">
+              <stop offset="0%" stop-color="#9B8ED8"/>
+              <stop offset="100%" stop-color="#7B6EB8"/>
+            </radialGradient>
+          </defs>
+          <rect x="15" y="15" width="50" height="50" rx="12" ry="12" transform="rotate(45 40 40)" fill="url(#gemGrad)"/>
+          <circle cx="40" cy="40" r="8.5" fill="#ffffff"/>
+        </svg>
+      </div>
+      <h1 class="welcome-title">Hi, I'm <em>Kiki.</em></h1>
+      <p class="welcome-desc">The AI agent that lives in your browser</p>
+    </header>
+
+    <!-- Phase 1: API Keys -->
+    <section id="phase-1" class="phase phase-active">
+      <div class="phase-collapsed" hidden>
+        <svg class="check-icon" viewBox="0 0 20 20"><polyline points="4 10 8.5 14.5 16 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="phase-summary" id="phase-1-summary">API keys configured</span>
+      </div>
+      <div class="phase-content">
+        <div class="editorial-line"></div>
+        <p class="phase-step">Step 1 of 4</p>
+        <h2 class="phase-title">Connect your <em>AI keys</em></h2>
+        <p class="phase-desc">Kiki calls AI providers directly from your browser. You provide the API keys — they stay on your machine and are never sent to any server.</p>
+
+        <div class="api-key-group">
+          <div class="api-key-row">
+            <div class="api-key-info">
+              <span class="api-key-label">Gemini API Key <span class="required-badge">required</span></span>
+              <span class="api-key-desc">Powers voice command understanding</span>
+            </div>
+            <div class="api-key-input-wrap">
+              <input type="password" id="gemini-key" class="api-key-input" placeholder="AIza..." autocomplete="off">
+              <span class="api-key-status" id="gemini-key-status"></span>
+            </div>
+            <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" class="api-key-link">Get a free key &rarr;</a>
+          </div>
+
+          <div class="api-key-row">
+            <div class="api-key-info">
+              <span class="api-key-label">Deepgram API Key <span class="required-badge">required</span></span>
+              <span class="api-key-desc">Powers speech-to-text</span>
+            </div>
+            <div class="api-key-input-wrap">
+              <input type="password" id="deepgram-key" class="api-key-input" placeholder="Enter your Deepgram key" autocomplete="off">
+              <span class="api-key-status" id="deepgram-key-status"></span>
+            </div>
+            <a href="https://console.deepgram.com/" target="_blank" rel="noopener" class="api-key-link">Get a free key &rarr;</a>
+          </div>
+
+          <details class="api-key-advanced">
+            <summary>Optional: Use a different AI provider</summary>
+            <p class="api-key-advanced-desc">Add keys for Anthropic or OpenAI if you prefer them over Gemini. You can then select your preferred provider in Settings.</p>
+
+            <div class="api-key-row">
+              <div class="api-key-info">
+                <span class="api-key-label">Anthropic API Key</span>
+                <span class="api-key-desc">Claude models</span>
+              </div>
+              <div class="api-key-input-wrap">
+                <input type="password" id="anthropic-key" class="api-key-input" placeholder="sk-ant-..." autocomplete="off">
+                <span class="api-key-status" id="anthropic-key-status"></span>
+              </div>
+              <a href="https://console.anthropic.com/" target="_blank" rel="noopener" class="api-key-link">Get key &rarr;</a>
+            </div>
+
+            <div class="api-key-row">
+              <div class="api-key-info">
+                <span class="api-key-label">OpenAI API Key</span>
+                <span class="api-key-desc">GPT models</span>
+              </div>
+              <div class="api-key-input-wrap">
+                <input type="password" id="openai-key" class="api-key-input" placeholder="sk-..." autocomplete="off">
+                <span class="api-key-status" id="openai-key-status"></span>
+              </div>
+              <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener" class="api-key-link">Get key &rarr;</a>
+            </div>
+          </details>
+        </div>
+
+        <button id="save-keys" class="btn btn-primary">Validate &amp; Save</button>
+        <p id="keys-status" class="help-text" hidden></p>
+      </div>
+    </section>
+
+    <!-- Phase 2: Microphone -->
+    <section id="phase-2" class="phase phase-hidden">
+      <div class="phase-collapsed" hidden>
+        <svg class="check-icon" viewBox="0 0 20 20"><polyline points="4 10 8.5 14.5 16 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="phase-summary" id="phase-2-summary">Microphone ready</span>
+      </div>
+      <div class="phase-content">
+        <div class="editorial-line"></div>
+        <p class="phase-step">Step 2 of 4</p>
+        <h2 class="phase-title">Let Kiki <em>hear</em> you</h2>
+        <p class="phase-desc">When prompted, choose <strong>"Allow while visiting the site"</strong> (or <strong>"Allow only while using the app"</strong>) so Kiki can listen for your voice.</p>
+        <div class="mic-status-row">
+          <span class="status-dot" id="mic-dot"></span>
+          <span id="mic-text">Checking microphone…</span>
+        </div>
+        <button id="grant-mic" class="btn btn-primary">Allow Microphone</button>
+        <p id="mic-denied-help" class="help-text" hidden>Go to <strong>chrome://settings/content/microphone</strong> and make sure this extension is allowed, then refresh this page.</p>
+      </div>
+    </section>
+
+    <!-- Phase 3: Use Cases -->
+    <section id="phase-3" class="phase phase-hidden">
+      <div class="phase-collapsed" hidden>
+        <svg class="check-icon" viewBox="0 0 20 20"><polyline points="4 10 8.5 14.5 16 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="phase-summary" id="phase-3-summary">Use cases explored</span>
+      </div>
+      <div class="phase-content">
+        <div class="editorial-line"></div>
+        <p class="phase-step">Step 3 of 4</p>
+        <h2 class="phase-title">See what Kiki can <em>do</em></h2>
+
+        <!-- Use case 1: Voice — Archive an email -->
+        <div id="challenge-1" class="challenge">
+          <div class="challenge-header">
+            <span class="challenge-num">1</span>
+            <span class="challenge-label">Archive an email with your voice</span>
+          </div>
+          <button class="kiki-demo-btn" id="demo-1">
+            <span class="kiki-demo-icon">▶</span> "Kiki, archive the Acme email"
+          </button>
+          <div class="mock-browser" id="mock-inbox-wrap">
+            <div class="mock-inbox">
+              <div class="mock-inbox-header">
+                <span class="mock-inbox-title">Inbox</span>
+                <span class="mock-inbox-count">3 unread</span>
+              </div>
+              <div class="mock-email highlight" id="acme-row">
+                <div class="mock-email-avatar" style="background: #7B6EB8;">A</div>
+                <div class="mock-email-body">
+                  <div class="mock-email-top">
+                    <span class="mock-email-sender">Acme Co.</span>
+                    <span class="mock-email-time">2:14 PM</span>
+                  </div>
+                  <div class="mock-email-subject">Your order has shipped</div>
+                  <div class="mock-email-preview">Your package is on the way. Track it here…</div>
+                </div>
+              </div>
+              <div class="mock-email">
+                <div class="mock-email-avatar" style="background: #4ecdc4;">S</div>
+                <div class="mock-email-body">
+                  <div class="mock-email-top">
+                    <span class="mock-email-sender">Stripe</span>
+                    <span class="mock-email-time">11:30 AM</span>
+                  </div>
+                  <div class="mock-email-subject">Your payout is on the way</div>
+                  <div class="mock-email-preview">$1,240.00 will arrive in 2 business days…</div>
+                </div>
+              </div>
+              <div class="mock-email">
+                <div class="mock-email-avatar" style="background: #E8A838;">J</div>
+                <div class="mock-email-body">
+                  <div class="mock-email-top">
+                    <span class="mock-email-sender">Jamie Chen</span>
+                    <span class="mock-email-time">Yesterday</span>
+                  </div>
+                  <div class="mock-email-subject">Re: Design review feedback</div>
+                  <div class="mock-email-preview">Looks great! Just one small note on the…</div>
+                </div>
+              </div>
+            </div>
+            <div class="mock-kiki-gem" id="gem-1">
+              <svg viewBox="0 0 36 36" class="mock-gem-svg"><rect class="mock-gem-body" x="8" y="8" width="20" height="20" rx="5" transform="rotate(45 18 18)"/><circle class="mock-gem-core" cx="18" cy="18" r="3.5"/></svg>
+            </div>
+            <div class="mock-kiki-tooltip" id="tooltip-1"></div>
+          </div>
+          <p class="challenge-status" id="challenge-1-status"></p>
+        </div>
+
+        <!-- Use case 2: Chat — Fill out a form -->
+        <div id="challenge-2" class="challenge challenge-locked">
+          <div class="challenge-header">
+            <span class="challenge-num">2</span>
+            <span class="challenge-label">Fill out a form with chat</span>
+          </div>
+          <button class="kiki-demo-btn" id="demo-2">
+            <span class="kiki-demo-icon">▶</span> "Fill this out with my info"
+          </button>
+          <div class="mock-browser" id="mock-form-wrap">
+            <div class="mock-form">
+              <div class="mock-form-title">Shipping Information</div>
+              <div class="mock-form-subtitle">Enter your delivery address</div>
+              <div class="mock-form-grid">
+                <div class="mock-form-field">
+                  <label class="mock-form-label">First name</label>
+                  <input type="text" id="challenge-type-input" class="mock-form-input" placeholder="Jane" tabindex="-1" readonly>
+                </div>
+                <div class="mock-form-field">
+                  <label class="mock-form-label">Last name</label>
+                  <input type="text" class="mock-form-input mock-readonly" placeholder="Doe" tabindex="-1" readonly>
+                </div>
+                <div class="mock-form-field full-width">
+                  <label class="mock-form-label">Street address</label>
+                  <input type="text" class="mock-form-input mock-readonly" placeholder="123 Main St, Apt 4B" tabindex="-1" readonly>
+                </div>
+                <div class="mock-form-field">
+                  <label class="mock-form-label">City</label>
+                  <input type="text" class="mock-form-input mock-readonly" placeholder="San Francisco" tabindex="-1" readonly>
+                </div>
+                <div class="mock-form-field">
+                  <label class="mock-form-label">ZIP code</label>
+                  <input type="text" class="mock-form-input mock-readonly" placeholder="94102" tabindex="-1" readonly>
+                </div>
+                <div class="mock-form-field full-width">
+                  <label class="mock-form-label">Phone</label>
+                  <input type="text" class="mock-form-input mock-readonly" placeholder="(415) 555-0123" tabindex="-1" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="mock-kiki-gem" id="gem-2">
+              <svg viewBox="0 0 36 36" class="mock-gem-svg"><rect class="mock-gem-body" x="8" y="8" width="20" height="20" rx="5" transform="rotate(45 18 18)"/><circle class="mock-gem-core" cx="18" cy="18" r="3.5"/></svg>
+            </div>
+            <div class="mock-kiki-tooltip" id="tooltip-2"></div>
+            <div class="mock-cursor" id="cursor-2">
+              <svg viewBox="0 0 24 24" width="16" height="20"><path d="M5 3l14 8-6.5 1.5L10 19z" fill="#1D1921" stroke="#fff" stroke-width="1.5"/></svg>
+            </div>
+            <div class="mock-chat-mini" id="mini-chat-2">
+              <div class="mock-chat-mini-header">
+                <svg viewBox="0 0 36 36" width="14" height="14"><rect x="8" y="8" width="20" height="20" rx="5" fill="#8B7EC8" transform="rotate(45 18 18)"/><circle cx="18" cy="18" r="3.5" fill="#fff"/></svg>
+                <span>Kiki</span>
+              </div>
+              <div class="mock-chat-mini-input" id="mini-chat-text-2"></div>
+            </div>
+          </div>
+          <p class="challenge-status" id="challenge-2-status"></p>
+        </div>
+
+        <!-- Use case 3: Voice — Find cheapest flight -->
+        <div id="challenge-3" class="challenge challenge-locked">
+          <div class="challenge-header">
+            <span class="challenge-num">3</span>
+            <span class="challenge-label">Find the cheapest flight</span>
+          </div>
+          <button class="kiki-demo-btn" id="demo-3">
+            <span class="kiki-demo-icon">▶</span> "Kiki, find the cheapest flight from NYC to Dallas"
+          </button>
+          <div class="mock-browser" id="mock-flights-wrap">
+            <div class="mock-tab-bar">
+              <div class="mock-tab active" id="tab-shopping">Shopping</div>
+              <div class="mock-tab" id="tab-flights">Flights</div>
+            </div>
+            <div class="mock-tab-content">
+              <div class="mock-tab-panel active" id="panel-shopping">
+                <div class="mock-shopping-grid">
+                  <div class="mock-product"><div class="mock-product-img"></div><div class="mock-product-name">Wireless Headphones</div><div class="mock-product-price">$79.99</div></div>
+                  <div class="mock-product"><div class="mock-product-img"></div><div class="mock-product-name">Smart Watch</div><div class="mock-product-price">$199.99</div></div>
+                  <div class="mock-product"><div class="mock-product-img"></div><div class="mock-product-name">Portable Speaker</div><div class="mock-product-price">$49.99</div></div>
+                  <div class="mock-product"><div class="mock-product-img"></div><div class="mock-product-name">USB-C Hub</div><div class="mock-product-price">$34.99</div></div>
+                </div>
+              </div>
+              <div class="mock-tab-panel" id="panel-flights">
+                <div class="mock-flights-header">
+                  <span class="mock-flights-route">NYC → DFW</span>
+                  <span class="mock-flights-date">Tomorrow</span>
+                </div>
+                <div class="mock-flight-row" id="flight-1">
+                  <span class="mock-flight-airline">United</span>
+                  <span class="mock-flight-times">6:00 AM – 9:15 AM</span>
+                  <span class="mock-flight-price">$187</span>
+                </div>
+                <div class="mock-flight-row cheapest" id="flight-2">
+                  <span class="mock-flight-airline">Spirit</span>
+                  <span class="mock-flight-times">10:30 AM – 1:45 PM</span>
+                  <span class="mock-flight-price">$89</span>
+                  <span class="mock-flight-badge">Cheapest</span>
+                </div>
+                <div class="mock-flight-row" id="flight-3">
+                  <span class="mock-flight-airline">American</span>
+                  <span class="mock-flight-times">3:00 PM – 6:20 PM</span>
+                  <span class="mock-flight-price">$214</span>
+                </div>
+              </div>
+            </div>
+            <div class="mock-kiki-gem" id="gem-3">
+              <svg viewBox="0 0 36 36" class="mock-gem-svg"><rect class="mock-gem-body" x="8" y="8" width="20" height="20" rx="5" transform="rotate(45 18 18)"/><circle class="mock-gem-core" cx="18" cy="18" r="3.5"/></svg>
+            </div>
+            <div class="mock-kiki-tooltip" id="tooltip-3"></div>
+          </div>
+          <p class="challenge-status" id="challenge-3-status"></p>
+        </div>
+
+        <!-- Skip button -->
+        <div class="challenge-skip" id="challenge-skip">
+          <button id="skip-challenges" class="btn btn-text">Skip to next step</button>
+        </div>
+
+        <!-- All complete message -->
+        <div id="challenges-complete" class="challenges-done" hidden>
+          <svg class="check-icon-large" viewBox="0 0 24 24"><polyline points="4 12 9.5 17.5 20 5.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="challenges-done-text">All done.<br><span class="challenges-done-sub">You've seen how Kiki works.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Phase 4: Activate Tabs -->
+    <section id="phase-4" class="phase phase-hidden">
+      <div class="phase-collapsed" hidden>
+        <svg class="check-icon" viewBox="0 0 20 20"><polyline points="4 10 8.5 14.5 16 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="phase-summary" id="phase-4-summary">Tabs activated</span>
+      </div>
+      <div class="phase-content">
+        <div class="editorial-line"></div>
+        <p class="phase-step">Step 4 of 4</p>
+        <h2 class="phase-title">Activate on <em>your tabs</em></h2>
+        <p class="phase-desc">Kiki needs to load on each open tab to hear you. New tabs will always work automatically.</p>
+        <button id="activate-tabs" class="btn btn-primary">Activate Kiki on All Tabs</button>
+        <p id="activate-status" class="help-text" hidden></p>
+      </div>
+    </section>
+
+    <!-- Outro: Farewell + Settings -->
+    <section id="outro" class="phase phase-hidden">
+      <div class="outro-content">
+        <div class="farewell">
+          <h2 class="phase-title" id="farewell-title">You're <em>all set.</em></h2>
+          <div class="usage-hints">
+            <div class="usage-hint">
+              <svg class="usage-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 1a4 4 0 0 0-4 4v6a4 4 0 0 0 8 0V5a4 4 0 0 0-4-4z"/>
+                <path d="M19 10v1a7 7 0 0 1-14 0v-1"/>
+                <line x1="12" y1="18" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+              </svg>
+              <span class="usage-hint-title">Say <em>"Kiki, ..."</em></span>
+              <span class="usage-hint-desc">and tell me what to do</span>
+            </div>
+            <div class="usage-hint">
+              <svg class="usage-hint-icon" viewBox="0 0 36 36">
+                <rect x="8" y="8" width="20" height="20" rx="5" fill="currentColor" transform="rotate(45 18 18)"/>
+                <circle cx="18" cy="18" r="3.5" fill="#fff"/>
+              </svg>
+              <span class="usage-hint-title">Click the <em>icon</em></span>
+              <span class="usage-hint-desc">to open the chat panel</span>
+            </div>
+          </div>
+          <button id="open-new-tab" class="btn btn-primary btn-large">Try Kiki in a new tab</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3 class="settings-heading">Settings</h3>
+
+        <div class="preference-row">
+          <div class="preference-info">
+            <span class="preference-label">Dark mode chat</span>
+            <span class="preference-desc">Switch the chat panel to a dark theme</span>
+          </div>
+          <label class="toggle" for="theme-toggle">
+            <input type="checkbox" id="theme-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="preference-row">
+          <div class="preference-info">
+            <span class="preference-label">Keyboard shortcut</span>
+            <span class="preference-desc">Activate Kiki with a hot key</span>
+          </div>
+          <div class="hotkey-setting">
+            <div id="hotkey-input" class="hotkey-display" tabindex="0">None</div>
+            <button id="clear-hotkey" class="btn btn-secondary btn-small" hidden>Clear</button>
+          </div>
+        </div>
+        <p id="hotkey-hint" class="hint hidden">Use a modifier key (Ctrl, Alt, Cmd) with another key to avoid conflicts.</p>
+
+        <div class="divider" style="margin: 1.5rem 0;"></div>
+        <h3 class="settings-heading">Model Configuration</h3>
+        <p class="phase-desc" style="margin-bottom: 1rem;">Choose which AI provider and model to use for each task. Only providers with configured API keys are shown.</p>
+
+        <div class="model-config-grid" id="model-config">
+          <div class="model-config-row">
+            <span class="model-config-label">Classify <span class="model-config-hint">fast, single actions</span></span>
+            <select id="config-classify-provider" class="model-select"></select>
+            <select id="config-classify-model" class="model-select"></select>
+          </div>
+          <div class="model-config-row">
+            <span class="model-config-label">Plan <span class="model-config-hint">multi-step tasks</span></span>
+            <select id="config-plan-provider" class="model-select"></select>
+            <select id="config-plan-model" class="model-select"></select>
+          </div>
+          <div class="model-config-row">
+            <span class="model-config-label">Continue <span class="model-config-hint">re-plan after navigation</span></span>
+            <select id="config-continue-provider" class="model-select"></select>
+            <select id="config-continue-model" class="model-select"></select>
+          </div>
+          <div class="model-config-row">
+            <span class="model-config-label">Chat <span class="model-config-hint">conversational mode</span></span>
+            <select id="config-chat-provider" class="model-select"></select>
+            <select id="config-chat-model" class="model-select"></select>
+          </div>
+        </div>
+        <button id="reset-model-config" class="btn btn-secondary btn-small" style="margin-top: 0.75rem;">Reset to Defaults</button>
+
+        <div class="divider" style="margin: 1.5rem 0;"></div>
+
+        <div class="preference-row">
+          <div class="preference-info">
+            <span class="preference-label">API Keys</span>
+            <span class="preference-desc">Update your provider API keys</span>
+          </div>
+          <button id="edit-keys" class="btn btn-secondary btn-small">Edit Keys</button>
+        </div>
+
+        <footer>
+          <a href="https://github.com/kiki-repo123123/kiki-oss" target="_blank" rel="noopener">GitHub</a>
+          <span class="sep">·</span>
+          <span>Kiki v1.0.0</span>
+        </footer>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

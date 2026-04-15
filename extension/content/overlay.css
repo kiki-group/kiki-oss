@@ -1,0 +1,52 @@
+/* Kiki — page-level styles injected via manifest content_scripts.
+   The status dot animations live inside the Shadow DOM (content-script.js).
+   This file handles: host element positioning + element label badges. */
+
+#kiki-host {
+  all: initial;
+  position: fixed !important;
+  bottom: 14px !important;
+  right: 14px !important;
+  z-index: 2147483647 !important;
+  pointer-events: none;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Chat window host — positioned same as dot, but one z-level below */
+
+#kiki-chat-host {
+  all: initial;
+  position: fixed !important;
+  bottom: 14px !important;
+  right: 14px !important;
+  z-index: 2147483646 !important;
+  pointer-events: none;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#kiki-chat-host.open {
+  pointer-events: auto;
+}
+
+/* Numbered badges on interactive elements ("click number 5") */
+
+.kiki-label-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 10px;
+  background: #8B7EC8;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 2147483646;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}
