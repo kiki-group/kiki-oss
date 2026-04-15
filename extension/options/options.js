@@ -48,10 +48,10 @@
   };
 
   var DEFAULT_MODEL_CONFIG = {
-    classify:  { provider: 'gemini', model: 'gemini-2.5-flash-lite' },
-    plan:      { provider: 'gemini', model: 'gemini-2.5-flash' },
-    continue:  { provider: 'gemini', model: 'gemini-2.5-flash' },
-    chat:      { provider: 'gemini', model: 'gemini-2.5-flash-lite' },
+    classify:  { provider: 'gemini', model: 'gemini-3.1-flash-lite' },
+    plan:      { provider: 'gemini', model: 'gemini-3-flash' },
+    continue:  { provider: 'gemini', model: 'gemini-3-flash' },
+    chat:      { provider: 'gemini', model: 'gemini-3.1-flash-lite' },
   };
 
   var ROUTES = ['classify', 'plan', 'continue', 'chat'];

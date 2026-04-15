@@ -5,7 +5,7 @@ Control any website with your voice. Say "Kiki" to activate, speak what you want
 ## Quick Start
 
 ```
-git clone https://github.com/kiki-repo123123/kiki-oss.git
+git clone https://github.com/kiki-group/kiki-oss.git
 ```
 
 1. Open `chrome://extensions` → enable **Developer mode** → **Load unpacked** → select the `extension/` folder
@@ -172,10 +172,10 @@ By default, Kiki uses Gemini models (free tier available). You can switch to Ant
 | **Deepgram** (STT) | nova-3 | [Deepgram Console](https://console.deepgram.com/) |
 
 You can configure different models per task type:
-- **Classify** — fast model for simple commands (default: gemini-2.5-flash-lite)
-- **Plan** — capable model for multi-step tasks (default: gemini-2.5-flash)
-- **Continue** — re-planning after page changes (default: gemini-2.5-flash)
-- **Chat** — conversational responses (default: gemini-2.5-flash-lite)
+- **Classify** — fast model for simple commands (default: gemini-3.1-flash-lite)
+- **Plan** — capable model for multi-step tasks (default: gemini-3-flash)
+- **Continue** — re-planning after page changes (default: gemini-3-flash)
+- **Chat** — conversational responses (default: gemini-3.1-flash-lite)
 
 ---
 
