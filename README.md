@@ -179,17 +179,9 @@ You can configure different models per task type:
 
 ---
 
-## Safety
-
-Destructive actions (purchase, send, delete, submit payment) trigger a safety gate. Kiki pauses and asks for vocal confirmation — say "yes" or "confirm" to proceed, or "cancel" to abort.
-
----
-
 ## Contributing
 
-Contributions are welcome! The codebase is pure vanilla JavaScript with no build step.
-
-For AI coding agents (Cursor, Claude, Copilot, etc.), see `AGENTS.md` for architecture details and `CLAUDE.md` for the file impact map and coding rules.
+Contributions are welcome!
 
 ---
 
