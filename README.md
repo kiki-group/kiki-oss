@@ -57,12 +57,12 @@ Everything runs in the Chrome extension — there is no Kiki server. Your API ke
 
 ### Information
 
-| Say | What happens |
+| Chat | What happens |
 |---|---|
-| "Kiki, what's on this page?" | Reads and summarizes the page |
-| "Kiki, what are the top stories?" | Extracts headlines from the page |
-| "Kiki, how much does this cost?" | Finds and reads the price |
-| "Kiki, extract the full specs" | Gathers all specifications from the page |
+| "What's on this page?" | Reads and summarizes the page |
+| "What are the top stories?" | Extracts headlines from the page |
+| "How much does this cost?" | Finds and reads the price |
+| "Extract the full specs" | Gathers all specifications from the page |
 
 ### Multi-Step Tasks
 
