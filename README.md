@@ -123,7 +123,7 @@ Simple one-step commands (scroll, click, navigate) are handled by a fast, cheap 
 
 ```
             ┌───────────┐
-            │ Classify   │  ← fast model (e.g. Gemini Flash Lite)
+            │ Classify  │  ← fast model (e.g. Gemini Flash Lite)
             └─────┬─────┘
                   │
            ┌──────┴──────┐
